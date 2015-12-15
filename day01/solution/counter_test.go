@@ -43,7 +43,7 @@ func Test_samples_from_exercise(t *testing.T) {
 }
 
 func Test_it_enters_basement_on_first_step(t *testing.T) {
-	err, basementPosition := counter.FirstBasementPosition(")")
+	basementPosition, err := counter.FirstBasementPosition(")")
 	if err != nil {
 		t.Error("Unexpected error %s", err)
 	} else if basementPosition != 1 {
@@ -52,7 +52,7 @@ func Test_it_enters_basement_on_first_step(t *testing.T) {
 }
 
 func Test_it_enters_basement_on_fifth_step(t *testing.T) {
-	err, basementPosition := counter.FirstBasementPosition("()())")
+	basementPosition, err := counter.FirstBasementPosition("()())")
 	if err != nil {
 		t.Error("Unexpected error %s", err)
 	} else if basementPosition != 5 {
