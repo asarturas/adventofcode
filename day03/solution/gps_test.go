@@ -70,3 +70,14 @@ func Test_sample_input(t *testing.T) {
 		t.Errorf("Expected to have visited 4 places, but reported %d instead.", navigator.VisitedPlaces());
 	}
 }
+
+func Test_it_combines_route_of_other_gps_to_current_gps(t *testing.T) {
+	nav1 := NewGps();
+	nav1.Route("^^^^^");
+	nav2 := NewGps();
+	nav2.Route("vvvvv");
+	nav1.Add(nav2);
+	if nav1.VisitedPlaces() != 11 {
+		t.Errorf("Expected to have visited 4 places, but reported %d instead.", nav1.VisitedPlaces());
+	}
+}

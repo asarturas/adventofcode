@@ -45,3 +45,9 @@ func (this *Gps) locate(move rune, current location) location {
 	}
 	return current;
 }
+
+func (this *Gps) Add(another *Gps) {
+	for loc, cnt := range another.visited {
+		this.visited[loc] += cnt;
+	}
+}
