@@ -7,7 +7,7 @@ import(
 )
 
 func main() {
-	miner := &solution.Miner{solution.Md5Hasher{}};
+	miner := &solution.Miner{"00000", solution.Md5Hasher{}};
 	_, number := miner.Mine(io.ReadLine());
 	fmt.Println(number);
 }
