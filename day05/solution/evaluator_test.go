@@ -69,7 +69,7 @@ func Test_exclusive_returns_true_if_all_evaluators_returned_true(t *testing.T) {
 	anotherEvaluator := NewMockEvaluator(controller);
 	anotherEvaluator.EXPECT().IsNice("aaabb").Return(true);
 	evaluators := []Evaluator{oneEvaluator, anotherEvaluator};
-	evaluator := &Composite{evaluators};
+	evaluator := &Exclusive{evaluators};
 	if !evaluator.IsNice("aaabb") {
 		t.Error("Expected 'aaaabb' to be nice.")
 	}
