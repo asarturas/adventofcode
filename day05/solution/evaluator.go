@@ -60,3 +60,28 @@ func (this *Exclusive) IsNice(word string) bool {
 	}
 	return true;
 }
+
+type Pairs struct{};
+
+func (this Pairs) IsNice(word string) bool {
+	for i := 0; i < len(word) - 1; i++ {
+		start := i;
+		end := i + 2;
+		pair := word[start:end];
+		if strings.Contains(word[end:], pair) {
+			return true;
+		}
+	}
+	return false;
+}
+
+type SplitRepeat struct{};
+
+func (this SplitRepeat) IsNice(word string) bool {
+	for i := 0; i < len(word) - 2; i++ {
+		if word[i] == word[i + 2] {
+			return true;
+		}
+	}
+	return false;
+}

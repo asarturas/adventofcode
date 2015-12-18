@@ -74,3 +74,32 @@ func Test_exclusive_returns_true_if_all_evaluators_returned_true(t *testing.T) {
 		t.Error("Expected 'aaaabb' to be nice.")
 	}
 }
+
+func Test_it_is_nice_when_it_has_non_overlapping_pair_going_one_after_another(t *testing.T) {
+	evaluator := Pairs{};
+	if !evaluator.IsNice("agag") {
+		t.Error("Expected 'agag' to be nice.");
+	}
+}
+
+func Test_it_is_not_nice_when_it_does_not_have_non_overlapping_repeating_pair(t *testing.T) {
+	evaluator := Pairs{};
+	if evaluator.IsNice("aggga") {
+		t.Error("Expected 'aggga' not to be nice.");
+	}
+}
+
+func Test_it_is_nice_when_it_has_repeated_letter_with_other_letter_in_between(t *testing.T) {
+	evaluator := SplitRepeat{};
+	if !evaluator.IsNice("aca") {
+		t.Error("Expected 'aca' to be nice.");
+	}
+}
+
+
+func Test_it_is_not_nice_when_it_does_not_have_repeated_letter_with_other_letter_in_between(t *testing.T) {
+	evaluator := SplitRepeat{};
+	if evaluator.IsNice("acbaad") {
+		t.Error("Expected 'acbaad' not to be nice.");
+	}
+}
