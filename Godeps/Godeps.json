@@ -1,0 +1,17 @@
+{
+	"ImportPath": "github.com/asarturas/adventofcode",
+	"GoVersion": "go1.4.2",
+	"Packages": [
+		"github.com/asarturas/adventofcode/day01/solution",
+		"github.com/asarturas/adventofcode/day02/solution",
+		"github.com/asarturas/adventofcode/day03/solution",
+		"github.com/asarturas/adventofcode/day04/solution",
+		"github.com/asarturas/adventofcode/day05/solution"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/golang/mock/gomock",
+			"Rev": "06883d979f10cc178f2716846215c8cf90f9e363"
+		}
+	]
+}

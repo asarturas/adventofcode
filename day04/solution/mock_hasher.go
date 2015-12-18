@@ -4,7 +4,7 @@
 package solution
 
 import (
-	gomock "github.com/golang/mock/gomock"
+	gomock "github.com/asarturas/adventofcode/Godeps/_workspace/src/github.com/golang/mock/gomock"
 )
 
 // Mock of Hasher interface
