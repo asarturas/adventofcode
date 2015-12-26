@@ -1,24 +1,31 @@
 package solution
 
 type Action interface {
-	Do(current bool) bool
+	Do(light Light) Light
 }
 
 type TurnOn struct {}
 
-func (this TurnOn) Do(current bool) bool {
-	return true;
+func (this TurnOn) Do(light Light) Light {
+	light.Brightness = 1
+	return light
 }
 
 type TurnOff struct {}
 
-func (this TurnOff) Do(current bool) bool {
-	return false;
+func (this TurnOff) Do(light Light) Light {
+	light.Brightness = 0
+	return light
 }
 
 type Toggle struct {}
 
-func (this Toggle) Do(current bool) bool {
-	return !current;
+func (this Toggle) Do(light Light) Light {
+	if light.IsOn() {
+		light.Brightness = 0
+	} else {
+		light.Brightness = 1
+	}
+	return light
 }
 
