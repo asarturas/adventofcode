@@ -13,7 +13,13 @@ type Instruction struct {
 	Start, End Coord
 }
 
-type InstructionParser struct {}
+type InstructionParser struct {
+	actionOptions []Action
+}
+
+func NewInstructionParser(actions ...Action) InstructionParser {
+	return InstructionParser{actions}
+}
 
 func (this InstructionParser) Parse(writing string) Instruction {
 	ins := Instruction{}
@@ -23,13 +29,12 @@ func (this InstructionParser) Parse(writing string) Instruction {
 }
 
 func (this InstructionParser) parseAction(writing string) (Action, string) {
-	if strings.HasPrefix(writing, "turn on") {
-		return TurnOn{}, strings.Replace(writing, "turn on ", "", 1);
-	} else if strings.HasPrefix(writing, "turn off") {
-		return TurnOff{}, strings.Replace(writing, "turn off ", "", 1);
-	} else {
-		return Toggle{}, strings.Replace(writing, "toggle ", "", 1);
+	for _, action := range this.actionOptions {
+		if strings.HasPrefix(writing, action.String()) {
+			return action, strings.Replace(writing, action.String(), "", 1);
+		}
 	}
+	return nil, writing
 }
 
 func (this InstructionParser) parseCoords(writing string) (Coord, Coord) {

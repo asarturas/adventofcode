@@ -8,9 +8,9 @@ import(
 
 func main() {
 	parser := solution.NewInstructionParser(
-		solution.TurnOn{},
-		solution.TurnOff{},
-		solution.Toggle{},
+		solution.TurnOnBrightness{},
+		solution.TurnOffBrightness{},
+		solution.ToggleBrightness{},
 	);
 	instructions := make([]solution.Instruction, 0);
 	for instruction := io.ReadLine(); instruction != ""; instruction = io.ReadLine() {
@@ -18,5 +18,5 @@ func main() {
 	}
 	grid := solution.NewGrid(1000);
 	grid.Apply(instructions);
-	fmt.Println(grid.OnLights());
+	fmt.Println(grid.TotalBrightness());
 }

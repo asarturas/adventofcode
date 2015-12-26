@@ -64,3 +64,16 @@ func Test_grid_modified_by_set_of_instructions(t *testing.T) {
 		t.Error("It was supposed to have 8 lights on", grid.OnLights());
 	}
 }
+
+func Test_it_returns_a_sum_of_brightnesses_from_a_grid(t *testing.T) {
+	grid := NewGrid(2)
+	instructions := []Instruction{
+		Instruction{TurnOnBrightness{}, Coord{0,0}, Coord{1,1}},
+		Instruction{ToggleBrightness{}, Coord{1,0}, Coord{1,1}},
+		Instruction{TurnOffBrightness{}, Coord{1,1}, Coord{1,1}},
+	}
+	grid.Apply(instructions)
+	if grid.TotalBrightness() != 7 {
+		t.Error("Expected a total brightness of 7, but instead got", grid.TotalBrightness())
+	}
+}

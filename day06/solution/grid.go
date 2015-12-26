@@ -49,3 +49,11 @@ func (this *Grid) applyTo(coord Coord, act Action) {
 	current := this.lights[location]
 	this.lights[location] = act.Do(current)
 }
+
+func (this *Grid) TotalBrightness() int {
+	total := 0
+	for _, light := range this.lights {
+		total += light.Brightness
+	}
+	return total
+}
