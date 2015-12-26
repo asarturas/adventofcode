@@ -2,6 +2,8 @@ package io
 
 import (
 	"fmt"
+	"bufio"
+	"os"
 )
 
 func ReadOneInt() int {
@@ -38,8 +40,15 @@ func ReadMatrix(n int) [][]int {
 	return matrix
 }
 
-func ReadLine() string {
+func ReadWord() string {
 	var a string
 	fmt.Scanf("%v", &a)
 	return a
+}
+
+var reader = bufio.NewReader(os.Stdin)
+
+func ReadLine() string {
+	str, _, _ := reader.ReadLine();
+	return string(str);
 }
